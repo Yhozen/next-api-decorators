@@ -7,7 +7,9 @@ export type NextFunction = (err?: Error) => void;
 export type NextMiddleware = (req: NextApiRequest, res: NextApiResponse, next: NextFunction) => void | Promise<void>;
 export type Middleware = NextMiddleware | RequestHandler;
 
-export function createMiddlewareDecorator(middleware: Middleware) {
+type MiddlewareDecorator = () => (target: object, propertyKey?: string | symbol) => void;
+
+export function createMiddlewareDecorator(middleware: Middleware): MiddlewareDecorator {
   return () => (target: object, propertyKey?: string | symbol): void => {
     const definedMiddlewares: Middleware[] =
       (propertyKey

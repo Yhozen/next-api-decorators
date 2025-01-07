@@ -1,5 +1,5 @@
 {
-  "name": "next-api-decorators",
+  "name": "@rccpr/next-api-decorators",
   "description": "Collection of decorators to create typed Next.js API routes, with easy request validation and transformation.",
   "version": "0.0.0-development",
   "author": {
@@ -106,5 +106,8 @@
     "!(examples|website)/**/*.+(js|jsx|ts|tsx|mdx)": [
       "eslint  --fix"
     ]
-  }
+  },
+  "trustedDependencies": [
+    "core-js-pure"
+  ]
 }

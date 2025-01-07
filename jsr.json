@@ -1,0 +1,6 @@
+{
+  "name": "@rccpr/next-api-decorators",
+  "version": "0.0.1",
+  "exports": "./lib/index.ts",
+  "exclude": ["node_modules", "dist", "examples", "website", "test"]
+}
