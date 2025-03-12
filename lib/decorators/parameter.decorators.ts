@@ -18,8 +18,12 @@ function addParameter(
   name?: MetaParameter['name'],
   pipes?: ParameterPipe<any>[],
   fn?: ParamDecorator<any>
-) {
-  return function (target: object, propertyKey: string | symbol, parameterIndex: number) {
+): ParameterDecorator {
+  return function (target: object, propertyKey: string | symbol | undefined, parameterIndex: number) {
+    if (!propertyKey) {
+      throw new Error('Property key is required');
+    }
+
     const params: Array<MetaParameter> = Reflect.getMetadata(PARAMETER_TOKEN, target.constructor, propertyKey) ?? [];
 
     params.push({ index: parameterIndex, location, name, pipes, fn });
