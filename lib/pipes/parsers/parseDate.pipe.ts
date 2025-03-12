@@ -1,5 +1,5 @@
 import { BadRequestException } from '../../exceptions';
-import type { PipeMetadata, PipeOptions } from '../ParameterPipe';
+import type { ParameterPipe, PipeMetadata, PipeOptions } from '../ParameterPipe';
 import { validateNullable } from '../validateNullable';
 import { validatePipeOptions } from '../validatePipeOptions';
 
@@ -41,7 +41,7 @@ function isISO8601(str: string, options: { strictSeparator?: boolean; strict?: b
 }
 
 /** Validates and transforms `Date` strings. Allows valid `ISO 8601` formatted date strings. */
-export function ParseDatePipe(options?: PipeOptions) {
+export function ParseDatePipe(options?: PipeOptions): ParameterPipe<Date, string> {
   return (value: any, metadata?: PipeMetadata) => {
     validatePipeOptions(value, metadata?.name, options);
 
